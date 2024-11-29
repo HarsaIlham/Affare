@@ -12,13 +12,13 @@
         </div>
     </div>
     <div class="flex flex-col md:flex-row justify-center items-center gap-6 max-w-5xl mx-auto pt-20">
-        <button class="bg-white border border-gray-200 rounded-lg shadow-md p-6 w-full md:w-1/3 hover:bg-indigo-50" onclick="window.location.href = '{{ route('auth.register') }}'">
+        <button class="bg-white border border-gray-200 rounded-lg shadow-md p-6 w-full md:w-1/3 hover:bg-indigo-50" onclick="window.location.href = '{{ route('auth.seeker') }}'">
             <div class="mb-4">
                 <span class="text-3xl">💼</span>
             </div>
             <h2 class="text-xl font-semibold text-gray-900 mb-2">Pencari Kerja</h2>
         </button>
-        <button class="bg-white border border-gray-200 rounded-lg shadow-md p-6 w-full md:w-1/3 hover:bg-indigo-50" onclick="window.location.href = '{{ route('auth.register') }}'">
+        <button class="bg-white border border-gray-200 rounded-lg shadow-md p-6 w-full md:w-1/3 hover:bg-indigo-50" onclick="window.location.href = '{{ route('auth.company') }}'">
             <div class="mb-4">
                 <span class="text-3xl">🏢</span>
             </div>

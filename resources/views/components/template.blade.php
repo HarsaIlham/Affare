@@ -1,12 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     @vite('resources/css/app.css')
     <title>@yield('title')</title>
+
+    <style>
+        .step { display: none; }
+        .step.active { display: block; }
+    </style>
 </head>
+
 <body class="min-h-screen flex flex-col bg-white ">
     <header>
         <x-header></x-header>
@@ -20,19 +27,14 @@
     <script>
         function previewImage(event) {
             const reader = new FileReader();
-            reader.onload = function(){
-                const output = document.getElementById('profile-preview');
-                output.src = reader.result;
-            };
-            reader.readAsDataURL(event.target.files[0]);
-        }function previewImage(event) {
-            const reader = new FileReader();
-            reader.onload = function(){
+            reader.onload = function() {
                 const output = document.getElementById('profile-preview');
                 output.src = reader.result;
             };
             reader.readAsDataURL(event.target.files[0]);
         }
+
     </script>
 </body>
+
 </html>

@@ -1,5 +1,5 @@
 @extends('components.template')
-@section('title', 'register')
+@section('title', 'Company')
 
 @section('content')
 <form action="#" method="POST">
@@ -21,14 +21,14 @@
             <p>Foto Profil</p>
         </div>
         <div>
-            <label for="name" class="block mb-2 text-sm pt-4 font-medium text-gray-900 ">Nama</label>
-            <input type="text" class=" border-gray-950 border bg-slate-200 py-1 w-1/2 focus:border-blue-500 focus:bg-white focus:outline-none bg-opacity-50 rounded-md text-black px-2" name="name" id="name" placeholder="Masukkan Nama" required>
+            <label for="perusahaan" class="block mb-2 text-sm pt-4 font-medium text-gray-900 ">Nama Perusahaan</label>
+            <input type="text" class=" border-gray-950 border bg-slate-200 py-1 w-1/2 focus:border-blue-500 focus:bg-white focus:outline-none bg-opacity-50 rounded-md text-black px-2" name="perusahaan" id="perusahaan" placeholder="Masukkan Nama Perusahaan" required>
             <label for="alamat" class="block mb-2 text-sm pt-4 font-medium text-gray-900">Alamat</label>
-            <input type="text" class=" border-gray-950 border bg-slate-200 py-1 w-1/2 focus:border-blue-500 focus:bg-white focus:outline-none bg-opacity-50 rounded-md text-black px-2" name="alamat" id="alamat" placeholder="Masukkan Alamat" required>
+            <input type="text" class=" border-gray-950 border bg-slate-200 py-1 w-1/2 focus:border-blue-500 focus:bg-white focus:outline-none bg-opacity-50 rounded-md text-black px-2" name="alamat" id="alamat" placeholder="Masukkan Alamat Perusahaan" required>
             <label for="hp" class="block mb-2 text-sm pt-4 font-medium text-gray-900">No. Handphone</label>
             <input type="text" class=" border-gray-950 border bg-slate-200 py-1 w-1/2 focus:border-blue-500 focus:bg-white focus:outline-none bg-opacity-50 rounded-md text-black px-2" name="hp" id="hp" placeholder="Masukkan No. Handphone" required>
             <label for="email" class="block mb-2 text-sm pt-4 font-medium text-gray-900">Email</label>
-            <input type="email" class=" border-gray-950 border bg-slate-200 py-1 w-1/2 focus:border-blue-500 focus:bg-white focus:outline-none bg-opacity-50 rounded-md text-black px-2" name="email" id="email" placeholder="Masukkan Email" required>
+            <input type="email" class=" border-gray-950 border bg-slate-200 py-1 w-1/2 focus:border-blue-500 focus:bg-white focus:outline-none bg-opacity-50 rounded-md text-black px-2" name="email" id="email" placeholder="Masukkan Email Perusahaan" required>
             <label for="password" class="block mb-2 text-sm pt-4 font-medium text-gray-900">Password</label>
             <input type="text" class=" border-gray-950 border bg-slate-200 py-1 w-1/2 focus:border-blue-500 focus:bg-white focus:outline-none bg-opacity-50 rounded-md text-black px-2" name="password" id="password" placeholder="Masukkan Password" required>
         </div>

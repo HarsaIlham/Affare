@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Kota;
+use App\Models\Province;
 use Illuminate\Http\Request;
 
 class AuthController extends Controller
@@ -14,8 +16,14 @@ class AuthController extends Controller
     {
         return view('auth.role');
     }
-    public function registerform(Request $request)
+    public function registerseekerform(Request $request)
     {
-        return view('auth.register');
+        $provinces = Province::all();
+        $cities = Kota::where('province_id', $request->id)->get();
+        return view('auth.registerseeker',compact('provinces','cities'));
+    }
+    public function registercompanyform(Request $request)
+    {
+        return view('auth.registercompany');
     }
 }
