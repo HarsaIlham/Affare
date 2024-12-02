@@ -2,10 +2,10 @@
 
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomepageController;
 
-Route::get('/', function () {
-    return view('components.home');
-});
+
+
 
 Route::prefix('auth')->name('auth.')->group(function () {
     Route::get('login', [AuthController::class, 'loginform'])->name('login');
@@ -13,3 +13,5 @@ Route::prefix('auth')->name('auth.')->group(function () {
     Route::get('role', [AuthController::class, 'roleform'])->name('role');
     Route::get('register', [AuthController::class, 'registerform'])->name('register');
 });
+
+Route::get('/homepage', [HomepageController::class, 'homepage'])->name('homepage-seeker');
