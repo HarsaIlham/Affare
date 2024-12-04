@@ -2,28 +2,55 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Kota;
-use App\Models\Province;
+use App\Models\Seeker;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Http\RedirectResponse;
+use Symfony\Component\HttpFoundation\Session\Flash\FlashBag;
 
 class AuthController extends Controller
 {
-    public function loginform(Request $request)
+    public function loginseeker(Request $request)
     {
-        return view('auth.login');
+        return view('auth.loginseeker');
     }
-    public function roleform(Request $request)
+    public function logincompany(Request $request)
     {
-        return view('auth.role');
+        return view('auth.logincompany');
     }
-    public function registerseekerform(Request $request)
+    public function authenticate(Request $request)
     {
-        $provinces = Province::all();
-        $cities = Kota::where('province_id', $request->id)->get();
-        return view('auth.registerseeker',compact('provinces','cities'));
+        $credentials = $request->validate([
+            'email' => 'required|email:dns',
+            'password' => 'required|min:8'
+        ]);
+        
+        if (Auth::guard('seeker')->attempt($credentials)) {
+            $request->session()->regenerate();
+            return redirect()->intended('/')->with('success', 'Login Berhasil');
+        }
+        if (Auth::guard('company')->attempt($credentials)) {
+            $request->session()->regenerate();
+            return redirect()->intended('/')->with('success', 'Login Berhasil');
+        }
+        return back()->withErrors([
+            'email' => 'The provided credentials do not match our records.',
+        ])->onlyInput('email');
     }
-    public function registercompanyform(Request $request)
+    public function roleregister(Request $request)
     {
-        return view('auth.registercompany');
+        return view('role.role-register');
+    }
+    public function rolelogin(Request $request){
+        return view('role.role-login');
+    }
+
+    public function logout(Request $request): RedirectResponse
+    {
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect('/')->with('logout_success', 'Logout Berhasil');
     }
 }

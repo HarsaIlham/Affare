@@ -13,9 +13,8 @@ return new class extends Migration
     {
         Schema::create('kotas', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('province_id') // Foreign key ke tabel provinces
-                ->constrained('provinces')
-                ->onDelete('cascade');
+            $table->unsignedBigInteger('province_id');
+            $table->foreign('province_id')->references('id')->on('provinces')->onDelete('cascade');
             $table->string('nama');
             $table->timestamps();
         });

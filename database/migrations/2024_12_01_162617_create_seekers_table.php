@@ -11,11 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('job_seekers', function (Blueprint $table) {
+        Schema::create('seekers', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('address');
-            $table->string('no_telepon');
+            $table->string('nama');
+            $table->unsignedBigInteger('province_id');
+            $table->foreign('province_id')->references('id')->on('provinces')->onDelete('cascade');
+            $table->unsignedBigInteger('kota_id');
+            $table->foreign('kota_id')->references('id')->on('kotas')->onDelete('cascade');
+            $table->string('alamat');
+            $table->string('no_telepon')->unique();
             $table->string('pendidikan');
             $table->string('status_bekerja');
             $table->string('email')->unique();
@@ -33,6 +37,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('job_seekers');
+        Schema::dropIfExists('seekers');
     }
 };

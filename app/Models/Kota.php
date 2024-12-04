@@ -11,4 +11,8 @@ class Kota extends Model
 
     protected $fillable = ['id', 'province_id', 'nama'];
 
+    public function province()
+    {
+        return $this->belongsTo(Province::class);
+    }
 }

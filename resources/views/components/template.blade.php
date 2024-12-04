@@ -7,6 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     @vite('resources/css/app.css')
     <title>@yield('title')</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <style>
         .step { display: none; }
@@ -29,6 +31,7 @@
             const reader = new FileReader();
             reader.onload = function() {
                 const output = document.getElementById('profile-preview');
+                document.querySelector('span').style.display = 'none';
                 output.src = reader.result;
             };
             reader.readAsDataURL(event.target.files[0]);
