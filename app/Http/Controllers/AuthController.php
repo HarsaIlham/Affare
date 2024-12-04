@@ -25,24 +25,25 @@ class AuthController extends Controller
             'email' => 'required|email:dns',
             'password' => 'required|min:8'
         ]);
-        
+
         if (Auth::guard('seeker')->attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect()->intended('/')->with('success', 'Login Berhasil');
+            return redirect()->intended('/homepage')->with('success', 'Login Berhasil');
         }
         if (Auth::guard('company')->attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect()->intended('/')->with('success', 'Login Berhasil');
+            return redirect()->intended('/homepage')->with('success', 'Login Berhasil');
         }
         return back()->withErrors([
-            'email' => 'The provided credentials do not match our records.',
+            'email' => 'Email atau password anda salah',
         ])->onlyInput('email');
     }
     public function roleregister(Request $request)
     {
         return view('role.role-register');
     }
-    public function rolelogin(Request $request){
+    public function rolelogin(Request $request)
+    {
         return view('role.role-login');
     }
 
@@ -51,6 +52,6 @@ class AuthController extends Controller
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return redirect('/')->with('logout_success', 'Logout Berhasil');
+        return redirect('/homepage')->with('logout_success', 'Logout Berhasil');
     }
 }

@@ -1,29 +1,86 @@
-<div class="bg-indigo-800 relative select-none lg:flex lg:items-stretch w-full">
-    <div class="container flex">
-        <div class="flex flex-no-shrink items-stretch h-12">
-            <p
-                class="flex-no-grow flex-no-shrink relative py-2 px-4 leading-normal text-white no-underline flex items-center hover:bg-grey-dark">
-                Ini navbar</p>
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .affare-text {
+            font-weight: 700;
+            font-size: 1.75rem;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50">
+    <header class="bg-white shadow">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <a href="{{ route('homepage-seeker') }}">
+                    <img src="{{ asset('storage/header-resource/affare-icon.webp') }}" alt="Logo" class="h-8">
+                </a>
+                <span class="affare-text text-black">Affare<span class="text-blue-400">!</span></span>
+            </div>
+
+            <button id="hamburger-button" class="md:hidden focus:outline-none">
+                <svg class="h-6 w-6 text-gray-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </button>
+
+            <nav id="navbar" class="hidden md:flex space-x-6 text-gray-600">
+                <a href="{{ route('homepage-seeker') }}" class="font-bold hover:text-blue-600 {{ request()->routeIs('homepage-seeker') ? 'text-blue-600' : '' }}">Eksplor</a>
+                <a href="{{ route('perusahaan') }}" class="font-bold hover:text-blue-600 {{ request()->routeIs('perusahaan') ? 'text-blue-600' : '' }}">Perusahaan</a>
+                <a href="#" class="font-bold hover:text-blue-600">Tersimpan</a>
+                <a href="#" class="font-bold hover:text-blue-600">Terdaftar</a>
+            </nav>
+
+
+            <div class="hidden md:flex items-center space-x-4">
+                <a href="#">
+                    <img src="{{ asset('storage/header-resource/notification.webp') }}" alt="Icon"
+                        class="h-6 w-6 mr-10">
+                </a>
+                <img src="{{ asset('storage/header-resource/foto-profil.webp') }}" alt="foto profil"
+                    class="h-8 w-8 rounded-full">
+            </div>
         </div>
-        <div class="lg:flex lg:items-stretch lg:justify-end ml-auto">
-            @if (Auth::guard('company')->check())
-                <form action="{{ route('logout') }}" method="POST">
-                    @csrf
-                    <button type="submit"
-                        class="flex-no-grow flex-no-shrink relative py-2 px-4 leading-normal text-white no-underline flex items-center hover:bg-grey-dark">Logout</button>
-                </form>
-            @elseif (Auth::guard('seeker')->check())
-                <form action="{{ route('logout') }}" method="POST">
-                    @csrf
-                    <button type="submit"
-                        class="flex-no-grow flex-no-shrink relative py-2 px-4 leading-normal text-white no-underline flex items-center hover:bg-grey-dark">Logout</button>
-                </form>
-            @else
-                <a href="{{ route('role-login') }}"
-                    class="flex-no-grow flex-no-shrink relative py-2 px-4 leading-normal text-white no-underline flex items-center hover:bg-grey-dark">Login</a>
-            @endif
-            <a href="/"
-                class="flex-no-grow flex-no-shrink relative py-2 px-4 leading-normal text-white no-underline flex items-center hover:bg-grey-dark">Home</a>
+    </header>
+
+    <div id="sidebar"
+        class="fixed top-0 right-0 h-full w-64 bg-white shadow-lg transform translate-x-full transition-transform duration-300 z-50">
+        <div class="flex justify-between items-center px-6 py-4 bg-gray-100 border-b">
+            <span class="affare-text text-black text-xl">Menu</span>
+            <button id="close-sidebar" class="focus:outline-none">
+                <svg class="h-6 w-6 text-gray-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
         </div>
+        <nav class="p-4 space-y-4">
+            <a href="{{ route('homepage-seeker') }}" class="font-bold hover:text-blue-600 {{ request()->routeIs('homepage-seeker') ? 'text-blue-600' : '' }}">Eksplor</a>
+            <a href="{{ route('perusahaan') }}" class="font-bold hover:text-blue-600 {{ request()->routeIs('Perusahaan') ? 'text-blue-600' : '' }}">Perusahaan</a>
+            <a href="#" class="block text-gray-700 font-bold hover:text-blue-600">Tersimpan</a>
+            <a href="#" class="block text-gray-700 font-bold hover:text-blue-600">Terdaftar</a>
+        </nav>
     </div>
-</div>
+
+    <script>
+        const hamburgerButton = document.getElementById('hamburger-button');
+        const sidebar = document.getElementById('sidebar');
+        const closeSidebar = document.getElementById('close-sidebar');
+        const body = document.body;
+
+        hamburgerButton.addEventListener('click', () => {
+            sidebar.classList.remove('translate-x-full'); // Ubah untuk muncul dari kanan
+            body.classList.add('overflow-hidden');
+        });
+
+        closeSidebar.addEventListener('click', () => {
+            sidebar.classList.add('translate-x-full'); // Ubah untuk sembunyi ke kanan
+            body.classList.remove('overflow-hidden');
+        });
+    </script>
+</body>
