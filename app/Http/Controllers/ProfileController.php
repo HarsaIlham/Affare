@@ -19,4 +19,7 @@ class ProfileController extends Controller
     {
         return view('profile.change-password');
     }
+    public function CVandPortofolio(Request $request) {
+        return view('Profile.cv-and-portofolio');
+    }
 }

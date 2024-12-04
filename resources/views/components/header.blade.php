@@ -32,8 +32,8 @@
             <nav id="navbar" class="hidden md:flex space-x-6 text-gray-600">
                 <a href="{{ route('homepage-seeker') }}" class="font-bold hover:text-blue-600 {{ request()->routeIs('homepage-seeker') ? 'text-blue-600' : '' }}">Eksplor</a>
                 <a href="{{ route('perusahaan') }}" class="font-bold hover:text-blue-600 {{ request()->routeIs('perusahaan') ? 'text-blue-600' : '' }}">Perusahaan</a>
-                <a href="#" class="font-bold hover:text-blue-600">Tersimpan</a>
-                <a href="#" class="font-bold hover:text-blue-600">Terdaftar</a>
+                <a href="{{ route('terdaftar') }}" class="font-bold hover:text-blue-600 {{ request()->routeIs('terdaftar') ? 'text-blue-600' : '' }}">Terdaftar</a>
+                {{-- <a href="#" class="font-bold hover:text-blue-600">Tersimpan</a> --}}
             </nav>
 
 
@@ -42,8 +42,10 @@
                     <img src="{{ asset('storage/header-resource/notification.webp') }}" alt="Icon"
                         class="h-6 w-6 mr-10">
                 </a>
-                <img src="{{ asset('storage/header-resource/foto-profil.webp') }}" alt="foto profil"
+                <a href="{{route('profile.user')}}">
+                    <img src="{{ asset('storage/header-resource/foto-profil.webp') }}" alt="foto profil"
                     class="h-8 w-8 rounded-full">
+                </a>
             </div>
         </div>
     </header>
@@ -74,12 +76,12 @@
         const body = document.body;
 
         hamburgerButton.addEventListener('click', () => {
-            sidebar.classList.remove('translate-x-full'); // Ubah untuk muncul dari kanan
+            sidebar.classList.remove('translate-x-full');
             body.classList.add('overflow-hidden');
         });
 
         closeSidebar.addEventListener('click', () => {
-            sidebar.classList.add('translate-x-full'); // Ubah untuk sembunyi ke kanan
+            sidebar.classList.add('translate-x-full');
             body.classList.remove('overflow-hidden');
         });
     </script>
