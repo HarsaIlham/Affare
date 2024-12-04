@@ -6,11 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     @vite('resources/css/app.css')
     <title>@yield('title')</title>
+    <link rel="shortcut icon" type="image/png/jpg" href="public/logo-affare.png">
 </head>
-<body class="min-h-screen flex flex-col bg-white ">
-    <header>
+<body class="min-h-screen flex flex-col bg-white">
+    {{-- <header>
         <x-header></x-header>
-    </header>
+    </header> --}}
     <main class="flex-grow">
         @yield('content')
     </main>

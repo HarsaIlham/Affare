@@ -4,7 +4,7 @@ use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('components.home');
+    return view('components.landing');
 });
 
 Route::prefix('auth')->name('auth.')->group(function () {
