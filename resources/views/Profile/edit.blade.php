@@ -20,7 +20,6 @@
                         @method('PUT')
 
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <!-- Input Nama -->
                             <div>
                                 <label for="name" class="block text-gray-700 font-medium mb-2">Nama</label>
                                 <input type="text" id="name" name="name" value="{{ old('name', 'Wahyu J. Maulidan') }}"
@@ -28,9 +27,7 @@
                             </div>
                         </div>
 
-                        <!-- Dropdown Provinsi dan Kota -->
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
-                            <!-- Dropdown Provinsi -->
                             <div>
                                 <label for="province" class="block text-gray-700 font-medium mb-2">Provinsi</label>
                                 <select id="province" name="province" class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
@@ -38,56 +35,47 @@
                                     <option value="Jawa Barat">Jawa Barat</option>
                                     <option value="DKI Jakarta">DKI Jakarta</option>
                                     <option value="Bali">Bali</option>
-                                    <!-- Tambahkan provinsi lain sesuai kebutuhan -->
                                 </select>
                             </div>
 
-                            <!-- Dropdown Kota -->
                             <div>
                                 <label for="city" class="block text-gray-700 font-medium mb-2">Kota</label>
                                 <select id="city" name="city" class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
                                     <option value="">Pilih Kota</option>
-                                    <!-- Kota akan disesuaikan dengan Provinsi yang dipilih -->
                                 </select>
                             </div>
                         </div>
 
-                        <!-- Input Alamat -->
                         <div class="col-span-2 mt-4">
                             <label for="address" class="block text-gray-700 font-medium mb-2">Alamat</label>
                             <input type="text" id="address" name="address" value="{{ old('address', 'Jl. Mangga No. 45, Kecamatan XYZ') }}"
                                 class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
                         </div>
 
-                        <!-- Input Nomor Telepon -->
                         <div class="mt-4">
                             <label for="phone" class="block text-gray-700 font-medium mb-2">Nomor Telepon</label>
                             <input type="text" id="phone" name="phone" value="{{ old('phone', '081234567890') }}"
                                 class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
                         </div>
 
-                        <!-- Input Pendidikan -->
                         <div class="mt-4">
                             <label for="education" class="block text-gray-700 font-medium mb-2">Pendidikan</label>
                             <input type="text" id="education" name="education" value="{{ old('education', 'S1 Teknik Informatika') }}"
                                 class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
                         </div>
 
-                        <!-- Input Status Bekerja -->
                         <div class="mt-4">
                             <label for="work_status" class="block text-gray-700 font-medium mb-2">Status Bekerja</label>
                             <input type="text" id="work_status" name="work_status" value="{{ old('work_status', 'Sedang Bekerja') }}"
                                 class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
                         </div>
 
-                        <!-- Input Email -->
                         <div class="mt-4">
                             <label for="email" class="block text-gray-700 font-medium mb-2">Email</label>
                             <input type="email" id="email" name="email" value="{{ old('email', 'wahyujumahm@gmail.com') }}"
                                 class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
                         </div>
 
-                        <!-- Input LinkedIn -->
                         <div class="mt-4 col-span-2">
                             <label for="linkedin" class="block text-gray-700 font-medium mb-2">LinkedIn</label>
                             <input type="url" id="linkedin" name="linkedin" value="{{ old('linkedin', 'https://www.linkedin.com/in/username') }}"

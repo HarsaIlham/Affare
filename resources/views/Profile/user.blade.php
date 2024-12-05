@@ -13,7 +13,7 @@
 
             <div class="w-full p-6">
                 <h2 class="text-lg font-semibold text-gray-700 mb-4">Informasi Umum</h2>
-                <div class="overflow-x-auto"> <!-- Menambahkan overflow untuk mencegah tabel meluber -->
+                <div class="overflow-x-auto"> 
                     <table class="w-full text-left border-collapse">
                         <thead>
                             <tr class="bg-gray-200">
