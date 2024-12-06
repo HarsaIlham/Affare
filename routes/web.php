@@ -8,7 +8,9 @@ use App\Http\Controllers\HomepageController;
 use App\Http\Controllers\PerusahaanController;
 use App\Http\Controllers\ProfileController;
 
-
+Route::get('/', function () {
+    return view('components.landing');
+});
 Route::group(['middleware' => ['guest:seeker,company']], function () {
     Route::get('/loginseeker', [AuthController::class, 'loginseeker'])->name('loginseeker');
     Route::get('/logincompany', [AuthController::class, 'logincompany'])->name('logincompany');
@@ -35,8 +37,7 @@ Route::group(['middleware' => ['auth:seeker,company']], function () {
 
 Route::get('/kotas/{nama}', [KotaController::class, 'getCitiesByProvince']);
 
-
-Route::get('/homepage', [HomepageController::class, 'homepage'])->name('homepage-seeker')->middleware('web');
+Route::get('/homepage', [HomepageController::class, 'homepage'])->name('homepage-seeker');
 Route::get('/perusahaan', [PerusahaanController::class, 'perusahaan'])->name('perusahaan');
 
 

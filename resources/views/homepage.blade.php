@@ -3,6 +3,8 @@
 @section('title', 'Homepage')
 
 @section('content')
+
+
     <body class="bg-blue-50">
         @if (session('success'))
             <script>
@@ -43,46 +45,46 @@
         </div>
 
 
-
-        <div class="container mx-auto px-4 py-6">
-            <div class="flex flex-wrap items-center gap-4 justify-start">
-                <select class="w-40 px-4 py-2 border rounded-md">
-                    <option disabled selected>Jenis</option>
-                    <option>Part-time</option>
-                    <option>Internship</option>
-                </select>
-                <select class="w-40 px-4 py-2 border rounded-md">
-                    <option disabled selected>Tipe</option>
-                    <option>On-Site</option>
-                    <option>Hybrid</option>
-                    <option>Remote</option>
-                </select>
-                <select class="w-40 px-4 py-2 border rounded-md">
-                    <option disabled selected>Lokasi</option>
-                    @foreach ($provinces as $province)
-                        <option value="{{ $province->id }}">{{ $province->nama }}
-                        </option>
-                    @endforeach
-                </select>
-                <select class="w-40 px-4 py-2 border rounded-md">
-                    <option disabled selected>Gaji</option>
-                    <option value="500000-2500000">Rp 500.000 - Rp 2.500.000</option>
-                    <option value="2500000-4000000">Rp 2.500.000 - Rp 4.000.000</option>
-                    <option value="4000000-5000000">Rp 4.000.000 - Rp 5.000.000</option>
-                    <option value="> 5000000">> Rp 5.000.000</option>
-                </select>
-                <select class="w-40 px-4 py-2 border rounded-md">
-                    <option>Terbaru</option>
-                    <option>Gaji Tertinggi</option>
-                </select>
-                <button class="px-4 py-2 bg-[#5d8de2] text-white rounded-md hover:bg-[#4a79c9]">
-                    Filter
-                </button>
-                <button class="px-4 py-2 bg-gray-200 rounded-md">Reset</button>
-
-
+        <form action="#" method="#">
+            <div class="container mx-auto px-4 py-6">
+                <div class="flex flex-wrap items-center gap-4 justify-start">
+                    <select class="w-40 px-4 py-2 border rounded-md">
+                        <option disabled selected>Jenis</option>
+                        <option>Part-time</option>
+                        <option>Internship</option>
+                    </select>
+                    <select class="w-40 px-4 py-2 border rounded-md">
+                        <option disabled selected>Tipe</option>
+                        <option>On-Site</option>
+                        <option>Hybrid</option>
+                        <option>Remote</option>
+                    </select>
+                    <select class="w-40 px-4 py-2 border rounded-md">
+                        <option disabled selected>Lokasi</option>
+                        @foreach ($provinces as $province)
+                            <option value="{{ $province->id }}">{{ $province->nama }}
+                            </option>
+                        @endforeach
+                    </select>
+                    <select class="w-40 px-4 py-2 border rounded-md">
+                        <option disabled selected>Gaji</option>
+                        <option value="500000-2500000">Rp 500.000 - Rp 2.500.000</option>
+                        <option value="2500000-4000000">Rp 2.500.000 - Rp 4.000.000</option>
+                        <option value="4000000-5000000">Rp 4.000.000 - Rp 5.000.000</option>
+                        <option value="> 5000000">> Rp 5.000.000</option>
+                    </select>
+                    <select class="w-40 px-4 py-2 border rounded-md">
+                        <option>Terbaru</option>
+                        <option>Gaji Tertinggi</option>
+                    </select>
+                    <button class="px-4 py-2 bg-[#5d8de2] text-white rounded-md hover:bg-[#4a79c9]">
+                        Filter
+                    </button>
+                    <button type="reset" class="px-4 py-2 bg-gray-200 rounded-md">Reset</button>
+                </div>
             </div>
-        </div>
+        </form>
+
 
         <div class="container mx-auto px-4">
             <h2 class="text-lg font-bold mb-4">Semua Lowongan (2310)</h2>

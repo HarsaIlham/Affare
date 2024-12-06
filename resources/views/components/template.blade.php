@@ -9,6 +9,7 @@
     <title>@yield('title')</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="shortcut icon" type="image/png/jpg" href="public/logo-affare.png">
 
     <style>
         .step { display: none; }
@@ -19,7 +20,7 @@
 <body class="min-h-screen flex flex-col bg-white ">
     <header>
         <x-header></x-header>
-    </header>
+    </header> 
     <main class="flex-grow">
         @yield('content')
     </main>
