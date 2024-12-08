@@ -1,4 +1,5 @@
-@extends('components.template')
+@e
+xtends('components.template')
 
 @section('title', 'Ubah Kata Sandi')
 

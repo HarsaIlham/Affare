@@ -29,5 +29,9 @@ Route::prefix('profile')->name('profile.')->group(function () {
     Route::get('/cv-and-portofolio', [ProfileController::class, 'CVandPortofolio'])->name('cv-and-portofolio');
 });
 
+Route::get('/review-lamaran', function () {
+    return view('review-lamaran');
+});
+
 
 
