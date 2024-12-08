@@ -89,19 +89,16 @@
 
         <nav>
             <a href="{{ route('companydashboard') }}" class="nav-link">Dashboard</a>
-            <a href="{{ route('jobscompany') }}" class="nav-link">Lowongan Saya</a>
-            <a href="#" class="nav-link">Kandidat Tersimpan</a>
+            <a href="{{ route('company.lowongancompany') }}" class="nav-link">Lowongan Saya</a>
+            <a href="#" class="nav-link">Pelamar</a>
+            {{-- <a href="#" class="nav-link">Kandidat Tersimpan</a> --}}
         </nav>
 
 
         
 
         <div class="hidden md:flex items-center space-x-4">
-            <a href="{{ route('postlowongan') }}" >
-                <button class="bg-blue-600 text-white px-4 py-2 rounded-lg shadow-md hover:bg-blue-700">
-                    Post Lowongan
-                </button>
-            </a>
+            
             <a href="{{route('company.profile.user-company')}}">
                 <img src="{{ asset('storage/header-resource/profile-user.webp') }}" alt="user-profile"
                 class="h-8 w-8 rounded-full">

@@ -23,10 +23,6 @@
      
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
-                <label for="tag" class="block text-lg font-semibold text-[#303030] mb-2">Tag</label>
-                <input type="text" id="tag" name="tag" placeholder="Kata kunci pekerjaan, tag, dll" class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400">
-            </div>
-            <div>
                 <label for="jenis" class="block text-lg font-semibold text-[#303030] mb-2">Jenis</label>
                 <select id="jenis" name="jenis" class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400" required>
                     <option value="" disabled selected>Pilih...</option>
@@ -34,17 +30,15 @@
                     <option value="parttime">Part-time</option>
                 </select>
             </div>
-        </div>
-
-  
-        <div>
-            <label for="tipe" class="block text-lg font-semibold text-[#303030] mb-2">Tipe</label>
-            <select id="tipe" name="tipe" class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400" required>
-                <option value="" disabled selected>Pilih...</option>
-                <option value="remote">Remote</option>
-                <option value="onsite">Onsite</option>
-                <option value="hybrid">Hybrid</option>
-            </select>
+            <div>
+                <label for="tipe" class="block text-lg font-semibold text-[#303030] mb-2">Tipe</label>
+                <select id="tipe" name="tipe" class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400" required>
+                    <option value="" disabled selected>Pilih...</option>
+                    <option value="remote">Remote</option>
+                    <option value="onsite">Onsite</option>
+                    <option value="hybrid">Hybrid</option>
+                </select>
+            </div>
         </div>
 
      
@@ -104,8 +98,8 @@
         </div>
     
         <div>
-            <label for="expiration_date" class="block text-lg font-semibold text-[#303030] mb-2">Tanggal Kadaluarsa</label>
-            <input type="date" id="expiration_date" name="expiration_date" class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400" required>
+            <label for="exp_date" class="block text-lg font-semibold text-[#303030] mb-2">Tanggal Berakhir</label>
+            <input type="date" id="exp_date" name="exp_date" class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400" required>
         </div>
 
        

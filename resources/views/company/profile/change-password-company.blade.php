@@ -3,6 +3,7 @@
 @section('title', 'Ubah Kata Sandi')
 
 @section('content')
+@include('components.headercompany')
 
     <body class="bg-gray-100">
        

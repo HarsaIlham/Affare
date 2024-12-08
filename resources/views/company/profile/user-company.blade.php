@@ -1,12 +1,17 @@
 @extends('components.template')
 
-@section('title', 'Profil')
+@section('title', 'Profil ')
 
 @section('content')
+@include('components.headercompany')
     <body class="bg-gray-100">
+        <div>
+            @include('components.company-card')
+        </div>
       
 
         <div class="flex mt-4 h-full">
+            @include('components.sidebar-company')
            
 
             <div class="w-full p-6">
@@ -25,6 +30,10 @@
                                 <td class="py-2 px-4 border-b text-gray-700">Gojek</td>
                             </tr>
                             <tr>
+                                <td class="py-2 px-4 border-b text-gray-700">Deskripsi</td>
+                                <td class="py-2 px-4 border-b text-gray-700">3 negara. 20+ layanan. 1 platform on-demand terkemuka.</td>
+                            </tr>
+                            <tr>
                                 <td class="py-2 px-4 border-b text-gray-700">Lokasi</td>
                                 <td class="py-2 px-4 border-b text-gray-700">Indramayu, Jawa Barat</td>
                             </tr>
@@ -36,10 +45,7 @@
                                 <td class="py-2 px-4 border-b text-gray-700">Nomor Telepon</td>
                                 <td class="py-2 px-4 border-b text-gray-700">081234567890</td>
                             </tr>
-                            <tr>
-                                <td class="py-2 px-4 border-b text-gray-700">Deskripsi</td>
-                                <td class="py-2 px-4 border-b text-gray-700">3 negara. 20+ layanan. 1 platform on-demand terkemuka.</td>
-                            </tr>
+                           
                             <tr>
                                 <td class="py-2 px-4 border-b text-gray-700">Email</td>
                                 <td class="py-2 px-4 border-b text-gray-700">wahyujumahm@gmail.com</td>
@@ -49,6 +55,14 @@
                                 <td class="py-2 px-4 border-b text-gray-700">
                                     <a href="https://www.gojek.com/id-id?gad_source=1&gclid=Cj0KCQiApNW6BhD5ARIsACmEbkWEoc_fYfGPbshQyQyBUPh0AxRckN_Q9Ok3xMbgRhKPCyfyenWJ_J0aAnocEALw_wcB" class="text-blue-500 hover:underline">
                                         https://www.gojek.com/id-id?gad_source=1&gclid=Cj0KCQiApNW6BhD5ARIsACmEbkWEoc_fYfGPbshQyQyBUPh0AxRckN_Q9Ok3xMbgRhKPCyfyenWJ_J0aAnocEALw_wcB
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="py-2 px-4 border-b text-gray-700">LinkedIn</td>
+                                <td class="py-2 px-4 border-b text-gray-700">
+                                    <a href="https://www.linkedin.com/in/username" class="text-blue-500 hover:underline">
+                                        https://www.linkedin.com/in/username
                                     </a>
                                 </td>
                             </tr>

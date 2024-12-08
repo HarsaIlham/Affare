@@ -1,8 +1,9 @@
 @extends('components.template')
 
-@section('title', 'Edit Profil')
+@section('title', 'Edit ')
 
 @section('content')
+@include('components.headercompany')
 
     <body class="bg-gray-100">
         
@@ -16,13 +17,20 @@
                         @csrf
                         @method('PUT')
 
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="grid grid-cols-1 gap-4">
                             <div>
                                 <label for="name" class="block text-gray-700 font-medium mb-2">Nama</label>
-                                <input type="text" id="name" name="name" value="{{ old('name', 'Wahyu J. Maulidan') }}"
+                                <input type="text" id="name" name="name" value="{{ old('name', 'Gojek') }}"
                                     class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
                             </div>
-                        </div>
+                        
+                            <div>
+                                <label for="deskripsi" class="block text-gray-700 font-medium mb-2">Deskripsi</label>
+                                <textarea id="deskripsi" name="deskripsi" rows="4"
+                                    class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400" required>{{ old('deskripsi', '3 negara. 20+ layanan. 1 platform on-demand terkemuka.') }}</textarea>
+                            </div>
+                        </div>                        
+                        
 
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
                             <div>
@@ -56,21 +64,15 @@
                         </div>
 
                         <div class="mt-4">
-                            <label for="education" class="block text-gray-700 font-medium mb-2">Pendidikan</label>
-                            <input type="text" id="education" name="education" value="{{ old('education', 'S1 Teknik Informatika') }}"
-                                class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
-                        </div>
-
-                        <div class="mt-4">
-                            <label for="work_status" class="block text-gray-700 font-medium mb-2">Status Bekerja</label>
-                            <input type="text" id="work_status" name="work_status" value="{{ old('work_status', 'Sedang Bekerja') }}"
-                                class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
-                        </div>
-
-                        <div class="mt-4">
                             <label for="email" class="block text-gray-700 font-medium mb-2">Email</label>
                             <input type="email" id="email" name="email" value="{{ old('email', 'wahyujumahm@gmail.com') }}"
                                 class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                        </div>
+
+                        <div class="mt-4 col-span-2">
+                            <label for="website" class="block text-gray-700 font-medium mb-2">Website</label>
+                            <input type="url" id="website" name="webiste" value="{{ old('website', 'https://www.gojek.com/id-id?gad_source=1&gclid=Cj0KCQiApNW6BhD5ARIsACmEbkWEoc_fYfGPbshQyQyBUPh0AxRckN_Q9Ok3xMbgRhKPCyfyenWJ_J0aAnocEALw_wcB') }}"
+                                class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
                         </div>
 
                         <div class="mt-4 col-span-2">
