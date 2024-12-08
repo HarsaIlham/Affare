@@ -3,10 +3,13 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\KotaController;
-use App\Http\Controllers\RegisterController;
-use App\Http\Controllers\HomepageController;
-use App\Http\Controllers\PerusahaanController;
+use App\Http\Controllers\SeekerController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\HomepageController;
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\TerdaftarController;
+use App\Http\Controllers\PerusahaanController;
+
 
 Route::get('/', function () {
     return view('components.landing');
@@ -24,7 +27,15 @@ Route::group(['middleware' => ['guest:seeker,company']], function () {
 });
 
 Route::group(['middleware' => ['auth:seeker']], function () {
-
+    Route::get('/user', [ProfileController::class, 'showProfile'])->name('profile-seeker');
+    Route::get('/edit', [ProfileController::class, 'editProfile'])->name('edit');
+    Route::get('/change-password', [ProfileController::class, 'changePassword'])->name('change-password');
+    Route::get('/cv-and-portofolio', [ProfileController::class, 'CVandPortofolio'])->name('cv-and-portofolio');
+    Route::put('/update-foto/{user}', [SeekerController::class, 'updatefoto'])->name('update-foto');
+    Route::put('/updatebio/{user}', [SeekerController::class, 'updatebio'])->name('update-bio');
+    Route::put('/updatecv/{user}', [SeekerController::class, 'updatecv'])->name('update-cv');
+    Route::put('/updateportofolio/{user}', [SeekerController::class, 'updateportofolio'])->name('update-portofolio');
+    Route::put('/updatepassword/{user}', [SeekerController::class, 'updatepassword'])->name('update-password');
 });
 
 Route::group(['middleware' => ['auth:company']], function () {
@@ -39,14 +50,9 @@ Route::get('/kotas/{nama}', [KotaController::class, 'getCitiesByProvince']);
 
 Route::get('/homepage', [HomepageController::class, 'homepage'])->name('homepage-seeker');
 Route::get('/perusahaan', [PerusahaanController::class, 'perusahaan'])->name('perusahaan');
+Route::get('/terdaftar', [TerdaftarController::class, 'terdaftar'])->name('terdaftar');
 
 
-
-Route::prefix('profile')->name('profile.')->group(function () {
-    Route::get('/user', [ProfileController::class, 'showProfile'])->name('user');
-    Route::get('/edit', [ProfileController::class, 'editProfile'])->name('edit');
-    Route::get('/change-password', [ProfileController::class, 'changePassword'])->name('change-password');
-});
 
 
 

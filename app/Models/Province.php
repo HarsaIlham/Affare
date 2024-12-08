@@ -16,6 +16,9 @@ class Province extends Model
     {
         return $this->hasMany(Kota::class);
     }
+    public function seekers(){
+        return $this->hasMany(Seeker::class);
+    }
 
 
 }

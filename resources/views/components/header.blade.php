@@ -69,7 +69,7 @@
                         <img src="{{ asset('storage/header-resource/notification.webp') }}" alt="Icon"
                             class="h-6 w-6 mr-10">
                     </a>
-                    <a href="#" class="flex gap-8">
+                    <a href="{{ route('profile-seeker') }}" class="flex gap-8">
                         {{ auth('seeker')->user()->nama }}
                         <img src="{{ asset('storage/' . auth('seeker')->user()->foto_profil) }}" alt="foto profil"
                             class="h-8 w-8 rounded-full">
@@ -115,12 +115,12 @@
         const body = document.body;
 
         hamburgerButton.addEventListener('click', () => {
-            sidebar.classList.remove('translate-x-full'); // Ubah untuk muncul dari kanan
+            sidebar.classList.remove('translate-x-full');
             body.classList.add('overflow-hidden');
         });
 
         closeSidebar.addEventListener('click', () => {
-            sidebar.classList.add('translate-x-full'); // Ubah untuk sembunyi ke kanan
+            sidebar.classList.add('translate-x-full');
             body.classList.remove('overflow-hidden');
         });
     </script>
