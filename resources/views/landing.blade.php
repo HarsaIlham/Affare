@@ -1,22 +1,21 @@
 @extends('components.template')
 
-@section('title')
-    Affare!
-@endsection
+@section('title', 'Affare!')
+
 
 @section('content')
 @include('components.headerlanding')
 
-<!-- Tambahkan AOS CSS -->
+
 <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
 
 <style>
     header {
-        margin-top: 20px; /* Tambahkan jarak dari atas */
+        margin-top: 20px; 
     }
 </style>
 
-<!-- Section Beranda -->
+
 <div id="landing"class="w-full h-[650px] flex justify-center items-center relative bg-[#5d8de2] rounded-[35px] mb-[120px]" data-aos="fade-up"> 
     <div class="absolute bottom-0 left-[174px] w-[1105px] h-[150px] bg-[#d4e4f8]/30 rounded-tl-[30px] rounded-tr-[30px]"></div>
     <div class="absolute flex flex-col md:flex-row w-full max-w-[1700px] h-full">
@@ -49,7 +48,7 @@
     </div>
 </div>
 
-<!-- Section Tentang Kami -->
+
 <div id="tentang-kami" class="w-full bg-white flex flex-col items-center py-[50px] mb-[100px]" data-aos="fade-up">
     <div class="text-center mb-[30px]">
         <h2 class="text-[32px] font-bold text-black font-['Montserrat']">Tentang Kami</h2>
@@ -66,7 +65,7 @@
     </div>
 </div>
 
-<!-- Section Peta Indonesia -->
+
 <div class="w-full bg-white flex flex-col items-center py-[50px]" data-aos="fade-up">
     <div class="text-center mb-[20px]">
         <h2 class="text-[32px] font-bold text-black font-['Montserrat']">Temukan peluang di kota besar atau sekitarmu</h2>
@@ -76,13 +75,13 @@
     </div>
 </div>
 
-<!-- Section Illustrasi -->
+
 <div class="w-full bg-white flex justify-center gap-[30px] py-[150px]">
     <img src="{{ asset('storage/landing-resource/illustration-3-affare.webp') }}" alt="Ilustrasi Applicant" class="w-[500px] h-auto" data-aos="fade-right">
     <img src="{{ asset('storage/landing-resource/illustration-4-affare.webp') }}" alt="Ilustrasi Employer" class="w-[500px] h-auto" data-aos="fade-left">
 </div>
 
-<!-- Section Ilustrasi 5 -->
+
 <div class="w-full bg-white flex justify-center gap-[30px] py-[50px]" data-aos="fade-up">
     <img src="{{ asset('storage/landing-resource/illustration-5-affare.webp') }}" alt="Ilustrasi 5" class="w-[1500px] h-auto">
 </div>
@@ -98,7 +97,7 @@
     </div>
     <div class="w-full">
 
-        <!-- Pertanyaan 1 -->
+        
         <div class="border-b-[1px] border-gray-300 py-[15px]">
             <div class="flex justify-between items-center cursor-pointer" onclick="toggleFaq(1)">
                 <p class="text-[20px] font-semibold text-black font-['Montserrat']">
@@ -111,7 +110,7 @@
             </div>
         </div>
 
-        <!-- Pertanyaan 2 -->
+        
         <div class="border-b-[1px] border-gray-300 py-[15px]">
             <div class="flex justify-between items-center cursor-pointer" onclick="toggleFaq(2)">
                 <p class="text-[20px] font-semibold text-black font-['Montserrat']">
@@ -124,7 +123,7 @@
             </div>
         </div>
 
-        <!-- Pertanyaan 3 -->
+     
         <div class="border-b-[1px] border-gray-300 py-[15px]">
             <div class="flex justify-between items-center cursor-pointer" onclick="toggleFaq(3)">
                 <p class="text-[20px] font-semibold text-black font-['Montserrat']">
@@ -140,7 +139,7 @@
     </div>
 </div>
 
-<!-- JavaScript untuk FAQ -->
+
 <script>
     function toggleFaq(id) {
         const answer = document.getElementById(`answer-${id}`);
@@ -148,21 +147,17 @@
 
         if (answer.classList.contains('hidden')) {
             answer.classList.remove('hidden');
-            answer.style.maxHeight = answer.scrollHeight + "px"; // Sesuaikan tinggi dengan isi konten
-            icon.style.transform = "rotate(180deg)"; // Animasi rotasi ikon
+            answer.style.maxHeight = answer.scrollHeight + "px"; 
+            icon.style.transform = "rotate(180deg)"; 
         } else {
-            answer.style.maxHeight = "0"; // Tutup animasi
+            answer.style.maxHeight = "0"; 
             answer.classList.add('hidden');
-            icon.style.transform = "rotate(0deg)"; // Kembali ke posisi awal
+            icon.style.transform = "rotate(0deg)"; 
         }
     }
 </script>
 
 
-
-
-
-<!-- Tambahkan AOS JavaScript -->
 <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
 <script>
     AOS.init({
