@@ -27,6 +27,7 @@ Route::group(['middleware' => ['guest:seeker,company']], function () {
 });
 
 Route::group(['middleware' => ['auth:seeker']], function () {
+    Route::get('/terdaftar', [TerdaftarController::class, 'terdaftar'])->name('terdaftar');
     Route::get('/user', [ProfileController::class, 'showProfile'])->name('profile-seeker');
     Route::get('/edit', [ProfileController::class, 'editProfile'])->name('edit');
     Route::get('/change-password', [ProfileController::class, 'changePassword'])->name('change-password');
@@ -50,9 +51,11 @@ Route::get('/kotas/{nama}', [KotaController::class, 'getCitiesByProvince']);
 
 Route::get('/homepage', [HomepageController::class, 'homepage'])->name('homepage-seeker');
 Route::get('/perusahaan', [PerusahaanController::class, 'perusahaan'])->name('perusahaan');
-Route::get('/terdaftar', [TerdaftarController::class, 'terdaftar'])->name('terdaftar');
 
 
+Route::get('/review-lamaran', function () {
+    return view('review-lamaran');
+});
 
 
 

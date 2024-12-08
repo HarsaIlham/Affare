@@ -58,8 +58,8 @@
                     class="font-bold hover:text-blue-600 {{ request()->routeIs('homepage-seeker') ? 'text-blue-600' : '' }}">Eksplor</a>
                 <a href="{{ route('perusahaan') }}"
                     class="font-bold hover:text-blue-600 {{ request()->routeIs('perusahaan') ? 'text-blue-600' : '' }}">Perusahaan</a>
-                <a href="#" class="font-bold hover:text-blue-600">Tersimpan</a>
-                <a href="#" class="font-bold hover:text-blue-600">Terdaftar</a>
+                {{-- <a href="#" class="font-bold hover:text-blue-600">Tersimpan</a> --}}
+                <a href="{{ route('terdaftar') }}" class="font-bold hover:text-blue-600">Terdaftar</a>
             </nav>
 
 
@@ -104,7 +104,7 @@
             <a href="{{ route('perusahaan') }}"
                 class="font-bold hover:text-blue-600 {{ request()->routeIs('Perusahaan') ? 'text-blue-600' : '' }}">Perusahaan</a>
             <a href="#" class="block text-gray-700 font-bold hover:text-blue-600">Tersimpan</a>
-            <a href="#" class="block text-gray-700 font-bold hover:text-blue-600">Terdaftar</a>
+            <a href="{{ route('terdaftar') }}" class="block text-gray-700 font-bold hover:text-blue-600">Terdaftar</a>
         </nav>
     </div>
 
