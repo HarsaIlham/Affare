@@ -65,10 +65,6 @@
 
             <div class="hidden md:flex items-center space-x-4">
                 @if (Auth::guard('seeker')->check())
-                    <a href="#">
-                        <img src="{{ asset('storage/header-resource/notification.webp') }}" alt="Icon"
-                            class="h-6 w-6 mr-10">
-                    </a>
                     <a href="{{ route('profile-seeker') }}" class="flex gap-8">
                         {{ auth('seeker')->user()->nama }}
                         <img src="{{ asset('storage/' . auth('seeker')->user()->foto_profil) }}" alt="foto profil"

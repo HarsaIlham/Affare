@@ -19,8 +19,8 @@
 
 <body class="min-h-screen flex flex-col bg-white ">
     <header>
-        <x-header></x-header>
-    </header> 
+        {{-- <x-header></x-header> --}}
+    </header>
     <main class="flex-grow">
         @yield('content')
     </main>

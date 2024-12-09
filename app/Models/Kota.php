@@ -15,4 +15,16 @@ class Kota extends Model
     {
         return $this->belongsTo(Province::class);
     }
+    public function seekers()
+    {
+        return $this->hasMany(Seeker::class);
+    }
+    public function lowongans()
+    {
+        return $this->hasMany(Lowongan::class);
+    }
+    public function companies()
+    {
+        return $this->hasMany(Company::class);
+    }
 }

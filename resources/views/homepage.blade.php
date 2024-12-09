@@ -3,7 +3,7 @@
 @section('title', 'Homepage')
 
 @section('content')
-
+    <x-header></x-header>
 
     <body class="bg-blue-50">
         @if (session('success'))

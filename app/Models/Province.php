@@ -19,6 +19,9 @@ class Province extends Model
     public function seekers(){
         return $this->hasMany(Seeker::class);
     }
+    public function companies(){
+        return $this->hasMany(Company::class);
+    }
 
 
 }

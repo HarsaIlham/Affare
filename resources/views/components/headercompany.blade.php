@@ -1,7 +1,6 @@
 <head>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;900&display=swap" rel="stylesheet">
     <style>
-        
         html {
             scroll-behavior: smooth;
         }
@@ -75,20 +74,8 @@
             transition: background-color 0.3s ease, color 0.3s ease;
         }
 
-        nav a:hover {
+        nav a:hover, nav a.active {
             color: #3b6fc3;
-        }
-
-        .masuk-link {
-            color: #5d8de2;
-            text-decoration: none;
-            transition: color 0.3s ease;
-            font-weight: 600;
-        }
-
-        .masuk-link:hover {
-            color: #3b6fc3;
-            
         }
     </style>
 </head>
@@ -96,32 +83,32 @@
 <body class="bg-gray-50">
     <header>
         <div class="flex items-center space-x-2">
-            
             <img src="{{ asset('storage/header-resource/affare-icon.webp') }}" alt="Logo" class="h-8">
             <span class="affare-text text-black">Affare<span style="color: #5d8de2;">!</span></span>
         </div>
 
-        
         <nav>
-            <a href="#landing" class="nav-link">Beranda</a>
-            <a href="#tentang-kami" class="nav-link">Tentang Kami</a>
-            <a href="#faq" class="nav-link">FAQ</a>
+            <a href="{{ route('companydashboard') }}" class="nav-link">Dashboard</a>
+            <a href="{{ route('company.lowongancompany') }}" class="nav-link">Lowongan Saya</a>
+            <a href="#" class="nav-link">Pelamar</a>
+            {{-- <a href="#" class="nav-link">Kandidat Tersimpan</a> --}}
         </nav>
 
+
         
-        <div class="flex items-center space-x-4">
-            <a href="{{ route('login') }}" class="hover:text-indigo-900 masuk-link" >Masuk</a>
-            <a href="{{ route('role-register') }}" class="custom-button">
-                <div class="custom-button-text">Daftar</div>
+
+        <div class="hidden md:flex items-center space-x-4">
+            <a href="{{route('company.profile.user-company')}}" class="flex gap-8">
+                {{ auth('company')->user()->nama }}
+                <img src="{{ asset('storage/'. auth('company')->user()->logo) }}" alt="user-profile"
+                class="h-8 w-8 rounded-full">
             </a>
         </div>
     </header>
 
-    
     <script>
         const navLinks = document.querySelectorAll('.nav-link');
 
-        
         function highlightActiveLink() {
             const currentUrl = window.location.href;
 
@@ -133,9 +120,19 @@
                 }
             });
         }
-        
+
+    
         highlightActiveLink();
 
+
         window.addEventListener('popstate', highlightActiveLink);
+
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', function () {
+                navLinks.forEach(nav => nav.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
     </script>
 </body>

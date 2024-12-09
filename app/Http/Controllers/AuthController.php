@@ -32,7 +32,7 @@ class AuthController extends Controller
         }
         if (Auth::guard('company')->attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect()->intended('/homepage')->with('success', 'Login Berhasil');
+            return redirect()->route('companydashboard')->with('success', 'Login Berhasil');
         }
         return back()->withErrors([
             'email' => 'Email atau password anda salah',
