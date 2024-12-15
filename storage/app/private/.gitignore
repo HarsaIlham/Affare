@@ -1,2 +1,4 @@
 *
 !.gitignore
+!.kota.json
+!.provinsi.json
