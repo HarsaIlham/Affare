@@ -23,6 +23,23 @@ class Company extends Authenticatable
         "password",
     ];
 
+    public function lowongans()
+    {
+        return $this->hasMany(Lowongan::class);
+    }
+    public function kota()
+    {
+        return $this->belongsTo(Kota::class);
+    }
+    public function province()
+    {
+        return $this->belongsTo(Province::class);
+    }
+    public function lamarans()
+    {
+        return $this->hasManyThrough(Lamaran::class, Lowongan::class);
+    }
+
     protected function casts(): array
     {
         return [

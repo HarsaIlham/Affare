@@ -2,8 +2,8 @@
     <ul class="space-y-2">
         @php
             $menuItems = [
-                ['label' => 'Informasi Umum', 'route' => route('company.profile.user-company'), 'active' => 'company.profile.user-company'],
-                ['label' => 'Ubah Kata Sandi', 'route' => route('company.profile.change-password-company'), 'active' => 'company.profile.change-password-company'],
+                ['label' => 'Informasi Umum', 'route' => route('user-company'), 'active' => 'user-company'],
+                ['label' => 'Ubah Kata Sandi', 'route' => route('change-password-company'), 'active' => 'change-password-company'],
             ];
         @endphp
 

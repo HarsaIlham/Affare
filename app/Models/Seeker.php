@@ -35,5 +35,13 @@ class Seeker extends Authenticatable
     {
         return $this->belongsTo(Province::class,'province_id');
     }
+    public function kota()
+    {
+        return $this->belongsTo(Kota::class,'kota_id');
+    }
+    public function lamarans()
+    {
+        return $this->hasMany(Lamaran::class);
+    }
 
 }

@@ -19,7 +19,7 @@
     </div>
     <div class="bg-white p-8 rounded-lg shadow-lg  flex flex-col items-center md:flex-row md:items-start">
         <div class="w-full md:w-1/2 mb-6 md:mb-0">
-            <form action="{{ route('authenticate') }}" method="POST" class="w-96">
+            <form action="{{ route('authenticateseeker') }}" method="POST" class="w-96">
                 @csrf
                 <div class="mb-4">
                     <label for="email" class="block text-sm font-medium text-gray-600">Email</label>

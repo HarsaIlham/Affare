@@ -1,5 +1,5 @@
 @php
-    $user = auth()->user();
+    $user = auth('seeker')->user();
 @endphp
 @if (session('update_foto'))
     <script>

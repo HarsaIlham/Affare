@@ -89,8 +89,8 @@
 
         <nav>
             <a href="{{ route('companydashboard') }}" class="nav-link">Dashboard</a>
-            <a href="{{ route('company.lowongancompany') }}" class="nav-link">Lowongan Saya</a>
-            <a href="#" class="nav-link">Pelamar</a>
+            <a href="{{ route('lowongancompany') }}" class="nav-link">Lowongan Saya</a>
+            <a href="{{ route('reviewlamaran') }}" class="nav-link">Pelamar</a>
             {{-- <a href="#" class="nav-link">Kandidat Tersimpan</a> --}}
         </nav>
 
@@ -98,7 +98,7 @@
         
 
         <div class="hidden md:flex items-center space-x-4">
-            <a href="{{route('company.profile.user-company')}}" class="flex gap-8">
+            <a href="{{route('user-company')}}" class="flex gap-8">
                 {{ auth('company')->user()->nama }}
                 <img src="{{ asset('storage/'. auth('company')->user()->logo) }}" alt="user-profile"
                 class="h-8 w-8 rounded-full">

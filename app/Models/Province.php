@@ -22,6 +22,9 @@ class Province extends Model
     public function companies(){
         return $this->hasMany(Company::class);
     }
+    public function lowongans(){
+        return $this->hasMany(Lowongan::class);
+    }
 
 
 }

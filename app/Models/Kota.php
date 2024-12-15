@@ -27,4 +27,5 @@ class Kota extends Model
     {
         return $this->hasMany(Company::class);
     }
+
 }

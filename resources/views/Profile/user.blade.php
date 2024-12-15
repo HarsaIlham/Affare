@@ -3,6 +3,7 @@
 @section('title', 'Profil')
 
 @section('content')
+@include('components.header')
 
     <body class="bg-gray-100">
         @if (session('update_bio_success'))

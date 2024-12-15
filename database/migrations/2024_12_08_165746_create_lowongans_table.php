@@ -17,7 +17,8 @@ return new class extends Migration
             $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade');
             $table->string('judul');
             $table->string('deskripsi');
-            $table->string('gaji');
+            $table->string('gaji_min');
+            $table->string('gaji_max');
             $table->unsignedBigInteger('jenis_job_id');
             $table->foreign('jenis_job_id')->references('id')->on('jenis_jobs')->onDelete('cascade');
             $table->unsignedBigInteger('tipe_job_id');
@@ -26,6 +27,9 @@ return new class extends Migration
             $table->foreign('kota_id')->references('id')->on('kotas')->onDelete('cascade');
             $table->unsignedBigInteger('provinsi_id');
             $table->foreign('provinsi_id')->references('id')->on('provinces')->onDelete('cascade');
+            $table->string('pendidikan');
+            $table->string('kualifikasi');
+            $table->string('exp_date');
             $table->string('status');
             $table->timestamps();
         });

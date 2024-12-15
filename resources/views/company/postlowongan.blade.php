@@ -13,40 +13,48 @@
                 Temukan pelamar terbaik untuk perusahaan Anda</div>
         </div>
 
-        <form action="#" method="POST" class="space-y-6">
+        <form action="{{ route('storelowongan') }}" method="POST" class="space-y-6">
             @csrf
 
 
             <div>
-                <label for="judul_pekerjaan" class="block text-lg font-semibold text-[#303030] mb-2">Judul Pekerjaan</label>
-                <input type="text" id="judul_pekerjaan" name="judul_pekerjaan"
-                    placeholder="Tambahkan judul pekerjaan, peran, dll"
+                <label for="judul" class="block text-lg font-semibold text-[#303030] mb-2">Judul Pekerjaan</label>
+                <input type="text" id="judul" name="judul" placeholder="Tambahkan judul pekerjaan, peran, dll"
                     class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
-                    required>
+                    required value="{{ old('judul') }}">
+                @error('judul')
+                    <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                @enderror
             </div>
 
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                    <label for="jenis" class="block text-lg font-semibold text-[#303030] mb-2">Jenis</label>
-                    <select id="jenis" name="jenis"
+                    <label for="jenis_job_id" class="block text-lg font-semibold text-[#303030] mb-2">Jenis</label>
+                    <select id="jenis_job_id" name="jenis_job_id"
                         class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
                         required>
-                        <option value="" disabled selected>Pilih...</option>
-                        <option value="internship">Internship</option>
-                        <option value="parttime">Part-time</option>
+                        <option value="" disabled {{ old('jenis_job_id') == '' ? 'selected' : '' }}>Pilih...</option>
+                        <option value="1">Internship</option>
+                        <option value="2">Part-time</option>
                     </select>
+                    @error('jenis_job_id')
+                        <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                    @enderror
                 </div>
                 <div>
-                    <label for="tipe" class="block text-lg font-semibold text-[#303030] mb-2">Tipe</label>
-                    <select id="tipe" name="tipe"
+                    <label for="tipe_job_id" class="block text-lg font-semibold text-[#303030] mb-2">Tipe</label>
+                    <select id="tipe_job_id" name="tipe_job_id"
                         class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
                         required>
-                        <option value="" disabled selected>Pilih...</option>
-                        <option value="remote">Remote</option>
-                        <option value="onsite">Onsite</option>
-                        <option value="hybrid">Hybrid</option>
+                        <option value="" disabled {{ old('tipe_job_id') == '' ? 'selected' : '' }}>Pilih...</option>
+                        <option value="1">Remote</option>
+                        <option value="2">Onsite</option>
+                        <option value="3">Hybrid</option>
                     </select>
+                    @error('tipe_job_id')
+                        <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                    @enderror
                 </div>
             </div>
 
@@ -56,16 +64,24 @@
                     <label for="gaji_min" class="block text-lg font-semibold text-[#303030] mb-2">Gaji Minimum</label>
                     <div class="flex items-center">
                         <span class="bg-gray-200 px-3 py-2 border border-r-0 rounded-l-md">IDR</span>
-                        <input type="number" id="gaji_min" name="gaji_min" placeholder="Gaji Minimum"
+                        <input type="number" id="gaji_min" name="gaji_min" placeholder="Gaji Minimum" required
+                            value="{{ old('gaji_min') }}"
                             class="w-full px-4 py-3 border border-gray-300 rounded-r-md focus:outline-none focus:ring-2 focus:ring-blue-400">
+                        @error('gaji_min')
+                            <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                        @enderror
                     </div>
                 </div>
                 <div>
                     <label for="gaji_max" class="block text-lg font-semibold text-[#303030] mb-2">Gaji Maksimum</label>
                     <div class="flex items-center">
                         <span class="bg-gray-200 px-3 py-2 border border-r-0 rounded-l-md">IDR</span>
-                        <input type="number" id="gaji_max" name="gaji_max" placeholder="Gaji Maksimum"
+                        <input type="number" id="gaji_max" name="gaji_max" placeholder="Gaji Maksimum" required
+                            value="{{ old('gaji_max') }}"
                             class="w-full px-4 py-3 border border-gray-300 rounded-r-md focus:outline-none focus:ring-2 focus:ring-blue-400">
+                        @error('gaji_max')
+                            <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                        @enderror
                     </div>
                 </div>
             </div>
@@ -73,39 +89,44 @@
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                    <label for="province_id" class="block text-lg font-semibold text-[#303030] mb-2">Provinsi</label>
-                    <select id="province_id" name="province_id"
+                    <label for="provinsi_id" class="block text-lg font-semibold text-[#303030] mb-2">Provinsi</label>
+                    <select id="provinsi_id" name="provinsi_id"
                         class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
                         required>
-                        <option value="" disabled selected>Pilih Provinsi</option>
+                        <option value="{{ $company->province->id }}"selected>{{ $company->province->nama }}</option>
                         @foreach ($provinces as $province)
                             <option value="{{ $province->id }}">{{ $province->nama }}
                             </option>
                         @endforeach
                     </select>
+                    @error('provinsi_id')
+                        <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                    @enderror
                 </div>
                 <div>
                     <label for="kota_id" class="block text-lg font-semibold text-[#303030] mb-2">Kota/Kabupaten</label>
                     <select id="kota_id" name="kota_id"
                         class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
                         required>
-                        <option value="" disabled selected>Pilih...</option>
+                        <option value="{{ $company->kota->id }}" selected>{{ $company->kota->nama }}</option>
                     </select>
+                    @error('kota_id')
+                        <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                    @enderror
                 </div>
             </div>
 
 
             <div>
-                <label for="pendidikan_terakhir" class="block text-lg font-semibold text-[#303030] mb-2">Pendidikan
+                <label for="pendidikan" class="block text-lg font-semibold text-[#303030] mb-2">Pendidikan
                     Terakhir</label>
-                <select id="pendidikan_terakhir" name="pendidikan_terakhir"
+                <input type="text" id="pendidikan" name="pendidikan"
                     class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
-                    required>
-                    <option value="" disabled selected>Pilih...</option>
-                    <option value="sma">SMA</option>
-                    <option value="smk">SMK</option>
-                    <option value="s1">S-1</option>
-                </select>
+                    required value="{{ old('pendidikan') }}">
+                </input>
+                @error('pendidikan')
+                    <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                @enderror
             </div>
 
 
@@ -113,21 +134,30 @@
                 <label for="deskripsi" class="block text-lg font-semibold text-[#303030] mb-2">Deskripsi</label>
                 <textarea id="deskripsi" name="deskripsi" rows="4" placeholder="Tambahkan deskripsi..."
                     class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
-                    required></textarea>
+                    required value="{{ old('deskripsi') }}"></textarea>
+                @error('deskripsi')
+                    <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                @enderror
             </div>
 
             <div>
                 <label for="kualifikasi" class="block text-lg font-semibold text-[#303030] mb-2">Kualifikasi</label>
                 <textarea id="kualifikasi" name="kualifikasi" rows="4" placeholder="Tambahkan Kualifikasi..."
                     class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
-                    required></textarea>
+                    required value="{{ old('kualifikasi') }}"></textarea>
+                @error('kualifikasi')
+                    <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                @enderror
             </div>
 
             <div>
                 <label for="exp_date" class="block text-lg font-semibold text-[#303030] mb-2">Tanggal Berakhir</label>
                 <input type="date" id="exp_date" name="exp_date"
                     class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
-                    required>
+                    required value="{{ old('exp_date') }}">
+                @error('exp_date')
+                    <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                @enderror
             </div>
 
 
@@ -140,7 +170,7 @@
     </div>
     <script>
         $(document).ready(function() {
-            $('#province_id').change(function() {
+            $('#provinsi_id').change(function() {
                 var provinceId = $(this).val();
                 if (provinceId) {
                     $.ajax({

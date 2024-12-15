@@ -19,7 +19,7 @@ class AuthController extends Controller
     {
         return view('auth.logincompany');
     }
-    public function authenticate(Request $request)
+    public function authenticateseeker(Request $request)
     {
         $credentials = $request->validate([
             'email' => 'required|email:dns',
@@ -30,10 +30,23 @@ class AuthController extends Controller
             $request->session()->regenerate();
             return redirect()->intended('/homepage')->with('success', 'Login Berhasil');
         }
+        
+        return back()->withErrors([
+            'email' => 'Email atau password anda salah',
+        ])->onlyInput('email');
+    }
+    public function authenticatecompany(Request $request)
+    {
+        $credentials = $request->validate([
+            'email' => 'required|email:dns',
+            'password' => 'required|min:8'
+        ]);
+
         if (Auth::guard('company')->attempt($credentials)) {
             $request->session()->regenerate();
             return redirect()->route('companydashboard')->with('success', 'Login Berhasil');
         }
+        
         return back()->withErrors([
             'email' => 'Email atau password anda salah',
         ])->onlyInput('email');
