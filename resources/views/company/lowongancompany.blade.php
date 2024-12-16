@@ -40,11 +40,14 @@
 
             <div class="flex justify-between items-center bg-gray-100 p-4 rounded-lg mb-4 shadow">
 
-                <div class="flex items-center bg-white border border-gray-300 rounded-lg px-4 py-2 w-1/3">
-                    <input type="text" placeholder="Cari pekerjaan..." class="flex-1 outline-none text-gray-700">
-                    <button class="ml-2 text-blue-500 hover:underline">
-                        Cari
-                    </button>
+                <div class=" bg-white border border-gray-300 rounded-lg px-4 py-2 w-1/3">
+                    <form action="{{ route('searchlowongan') }}" method="GET" class="flex justify-between">
+                        <input type="text" placeholder="Cari pekerjaan..." name="search"
+                            class="flex-1 outline-none text-gray-700">
+                        <button type="submit" class="ml-2 text-blue-500 hover:underline">
+                            Cari
+                        </button>
+                    </form>
                 </div>
 
                 <div class="flex items-center gap-4">
@@ -114,15 +117,9 @@
             </div>
 
 
-            <div class="flex justify-between items-center mt-6">
-                <p class="text-gray-600">Menampilkan 1 hingga 10 dari 589 entri</p>
+            <div class="flex justify-end items-center mt-6">
                 <div class="flex gap-2">
-                    <button
-                        class="px-4 py-2 border border-gray-300 rounded-lg text-gray-600 hover:bg-gray-100">Sebelumnya</button>
-                    <button class="px-4 py-2 border border-gray-300 rounded-lg text-gray-600 hover:bg-gray-100">1</button>
-                    <button class="px-4 py-2 border border-gray-300 rounded-lg text-gray-600 hover:bg-gray-100">2</button>
-                    <button
-                        class="px-4 py-2 border border-gray-300 rounded-lg text-gray-600 hover:bg-gray-100">Selanjutnya</button>
+                    {{ $lowongans->links() }}
                 </div>
             </div>
         </main>

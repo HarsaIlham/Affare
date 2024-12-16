@@ -132,11 +132,11 @@
 
         function updateStatus() {
             Swal.fire({
-                title: 'Apakah Anda yakin ingin melamar lowongan ini?',
-                text: 'Berkas cv dan portofolio anda harus lengkap!',
+                title: 'Apakah Anda yakin mengubah status lamaran?',
+                text: 'Perhatikan lagi berkas pelamar!',
                 icon: 'warning',
                 showCancelButton: true,
-                confirmButtonText: 'Ya, Lamar!',
+                confirmButtonText: 'Ya, Ubah!',
                 cancelButtonText: 'Batal',
                 reverseButtons: true
             }).then((result) => {

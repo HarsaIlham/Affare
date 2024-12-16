@@ -199,8 +199,8 @@
 
         function confirmupdatelowongan() {
             Swal.fire({
-                title: 'Apakah Anda yakin ingin mengubah data diri?',
-                text: 'Data diri anda akan berubah sesuai dengan data yang anda masukkan.',
+                title: 'Apakah Anda yakin ingin mengubah data lowongan?',
+                text: 'Lowongan anda akan berubah sesuai dengan data yang anda masukkan.',
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonText: 'Ya, Ubah!',

@@ -64,7 +64,7 @@
             <img src="{{ asset('storage/images/image-login-employer.png') }}" alt="">
         </div>
     </div>
-    
+
     <script>
         const passwordInput = document.getElementById("password");
         const togglePasswordButton = document.getElementById("togglepassword");
@@ -76,6 +76,17 @@
             togglePasswordButton.textContent = type === "password" ? "🙉" : "🙈";
         });
     </script>
+    
+    @if (session('success'))
+        <script>
+            Swal.fire({
+                icon: "success",
+                title: "Registrasi Berhasil!",
+                showConfirmButton: true,
+                ConfirmbuttonText: "OK"
+            });
+        </script>
+    @endif
 </body>
 
 </html>

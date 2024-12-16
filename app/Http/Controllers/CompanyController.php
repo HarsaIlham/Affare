@@ -17,9 +17,12 @@ class CompanyController extends Controller
 {
     public function companydashboard()
     {
+        $currentPage = request()->get('halaman', 1);
+        $perPage = 5; 
         $company = auth('company')->user();
         $totalpelamar = $company->lamarans()->count();
-        $lowongans = $company->lowongans()->get();
+        Lowongan::where('exp_date', '<', now())->where('status', '1')->update(['status' => '0']);
+        $lowongans = $company->lowongans()->paginate($perPage, ['*'], 'halaman', $currentPage);
         foreach ($lowongans as $lowongan) {
             $lowongan->jumlah_pelamar = $lowongan->lamarans()->count();
         }
@@ -63,10 +66,13 @@ class CompanyController extends Controller
 
     public function updatelogo(Request $request, Company $user)
     {
+        $validatedData = $request->validate([
+            'logo' => 'nullable|image|mimes:jpeg,png,jpg|file|max:2048'
+        ]);
         if ($user->logo) {
-            Storage::delete($user->foto_profil);
+            Storage::delete($user->logo);
         }
-        $user->logo = $request->file('logo')->store('logo');
+        $user->logo = $validatedData['logo']->store('logo');
         $user->update([
             "logo" => $user->logo
         ]);

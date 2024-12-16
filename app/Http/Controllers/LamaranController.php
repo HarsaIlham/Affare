@@ -29,7 +29,6 @@ class LamaranController extends Controller
             'applicationId' => 'required',
             'status' => 'required'
         ]);
-        dd($validatedData['applicationId']);
         $lamaran = Lamaran::find($validatedData['applicationId']);
         $lamaran->update([
             'status' => $validatedData['status']

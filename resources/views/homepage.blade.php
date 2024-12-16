@@ -9,50 +9,47 @@
         <div class="bg-blue-500 text-white py-20 relative">
             <div class="container mx-auto px-4 text-center relative z-10">
                 <h1 class="text-3xl font-bold mb-4">Temukan peluangmu di sini!</h1>
-                <div class="flex justify-center relative">
-                    <input type="text" placeholder="Cari Lowongan"
-                        class="w-full max-w-md px-4 py-2 rounded-l-md border border-gray-300 focus:outline-none" />
-                    <button class="bg-blue-600 px-6 py-2 text-white font-semibold rounded-r-md hover:bg-blue-700">
-                        Cari
-                    </button>
-                </div>
+                <form action="{{ route('search') }}" method="GET">
+                    <div class="flex justify-center relative">
+                        <input type="text" placeholder="Cari Lowongan" id="search" name="search"
+                            class="w-full max-w-md px-4 py-2 rounded-l-md border border-gray-300 focus:outline-none text-black" />
+                        <button type="submit"
+                            class="bg-blue-600 px-6 py-2 text-white font-semibold rounded-r-md hover:bg-blue-700">
+                            Cari
+                        </button>
+                    </div>
+                </form>
             </div>
             <img src="{{ asset('storage/homepage-resource/element-section.webp') }}" alt="Illustration"
                 class="absolute bottom-0 right-0 w-1/3 lg:w-1/4 h-auto object-cover opacity-50 md:opacity-100 z-0" />
         </div>
 
 
-        <form action="#" method="#">
+        <form action="{{ route('filter') }}" method="#">
             <div class="container mx-auto px-4 py-6">
                 <div class="flex flex-wrap items-center gap-4 justify-start">
-                    <select class="w-40 px-4 py-2 border rounded-md">
+                    <select class="w-40 px-4 py-2 border rounded-md" name="jenis_job">
                         <option disabled selected>Jenis</option>
-                        <option>Part-time</option>
-                        <option>Internship</option>
+                        <option value="1">Internship</option>
+                        <option value="2">Part-time</option>
                     </select>
-                    <select class="w-40 px-4 py-2 border rounded-md">
+                    <select class="w-40 px-4 py-2 border rounded-md" name="tipe_job">
                         <option disabled selected>Tipe</option>
-                        <option>On-Site</option>
-                        <option>Hybrid</option>
-                        <option>Remote</option>
+                        <option value="1">Remote</option>
+                        <option value="2">On-Site</option>
+                        <option value="3">Hybrid</option>
                     </select>
-                    <select class="w-40 px-4 py-2 border rounded-md">
+                    <select class="w-40 px-4 py-2 border rounded-md" name="lokasi">
                         <option disabled selected>Lokasi</option>
                         @foreach ($provinces as $province)
                             <option value="{{ $province->id }}">{{ $province->nama }}
                             </option>
                         @endforeach
                     </select>
-                    <select class="w-40 px-4 py-2 border rounded-md">
-                        <option disabled selected>Gaji</option>
-                        <option value="500000-2500000">Rp 500.000 - Rp 2.500.000</option>
-                        <option value="2500000-4000000">Rp 2.500.000 - Rp 4.000.000</option>
-                        <option value="4000000-5000000">Rp 4.000.000 - Rp 5.000.000</option>
-                        <option value="> 5000000">> Rp 5.000.000</option>
-                    </select>
-                    <select class="w-40 px-4 py-2 border rounded-md">
-                        <option>Terbaru</option>
-                        <option>Gaji Tertinggi</option>
+                    <select class="w-40 px-4 py-2 border rounded-md" name="urutan">
+                        <option value="terbaru">Terbaru</option>
+                        <option value="terlama">Terlama</option>
+                        <option value="tertinggi">Gaji Tertinggi</option>
                     </select>
                     <button class="px-4 py-2 bg-[#5d8de2] text-white rounded-md hover:bg-[#4a79c9]">
                         Filter
@@ -63,8 +60,11 @@
         </form>
 
         <div class="container mx-auto px-4">
-            <h2 class="text-lg font-bold mb-4">Semua Lowongan (2310)</h2>
+            <h2 class="text-lg font-bold mb-4">Semua Lowongan ({{ $banyaklowongan }})</h2>
             {{-- card lowongan --}}
+            @if (isset($query))
+                <h3>Hasil pencarian untuk: "{{ $query }}"</h3>
+            @endif
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 @foreach ($lowongans as $lowongan)
                     <div class="bg-white rounded-md shadow-md p-4">
@@ -104,23 +104,7 @@
 
             <div class="flex justify-center mt-6">
                 <nav class="inline-flex rounded-md shadow-sm">
-                    <a href="#"
-                        class="px-3 py-2 bg-white text-gray-500 border border-gray-300 rounded-l-md hover:bg-blue-100">
-                        Sebelumnya
-                    </a>
-                    <a href="#" class="px-3 py-2 bg-white text-gray-500 border border-gray-300 hover:bg-blue-100">
-                        1
-                    </a>
-                    <a href="#" class="px-3 py-2 bg-white text-gray-500 border border-gray-300 hover:bg-blue-100">
-                        2
-                    </a>
-                    <a href="#" class="px-3 py-2 bg-white text-gray-500 border border-gray-300 hover:bg-blue-100">
-                        3
-                    </a>
-                    <a href="#"
-                        class="px-3 py-2 bg-white text-gray-500 border border-gray-300 rounded-r-md hover:bg-blue-100">
-                        Selanjutnya
-                    </a>
+                    {{ $lowongans->links() }}
                 </nav>
             </div>
         </div>
@@ -194,16 +178,7 @@
                 });
             </script>
         @endif
-        @if (session('logout_success'))
-            <script>
-                Swal.fire({
-                    icon: "success",
-                    title: "Anda telah logout!",
-                    showConfirmButton: true,
-                    ConfirmbuttonText: "OK"
-                });
-            </script>
-        @endif
+        
         @if (session('lamar_success'))
             <script>
                 Swal.fire({

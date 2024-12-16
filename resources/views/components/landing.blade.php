@@ -206,6 +206,16 @@
             once: true
         });
     </script>
+    @if (session('logout_success'))
+        <script>
+            Swal.fire({
+                icon: "success",
+                title: "Anda telah logout!",
+                showConfirmButton: true,
+                ConfirmbuttonText: "OK"
+            });
+        </script>
+    @endif
 </body>
 
 </html>

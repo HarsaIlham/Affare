@@ -2,12 +2,26 @@
 @section('title', 'Seeker')
 
 @section('content')
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .affare-text {
+            font-weight: 700;
+            font-size: 1.75rem;
+        }
+    </style>
+</head>
     <form action="{{ route('storeseeker') }}" method="POST" enctype="multipart/form-data" id="form-register">
         @csrf
         <div class="container mx-auto flex justify-center pt-5 py-5">
             <div class="bg-white border border-gray-200 rounded-lg shadow-md px-6 pt-6">
-                <div class=" flex justify-center bg-indigo-700 text-yellow-300 rounded px-56 py-2">
-                    <h1 class=" font-bold text-xl">AFFARE</h1>
+                <div class="flex justify-center space-x-2">
+                    <img src="{{ asset('storage/header-resource/affare-icon.webp') }}" alt="Logo" class="h-8">
+                    <span class="affare-text font- text-black">Affare<span style="color: #5d8de2;">!</span></span>
                 </div>
 
                 {{-- Step 1 --}}
@@ -105,7 +119,7 @@
                     </div>
                     <div class="flex items-center justify-center pt-14 pb-6">
                         <button type="button" onclick="goToStep(2)"
-                            class="text-white bg-indigo-700 hover:bg-indigo-800 focus:ring-4 focus:outline-none focus:ring-indigo-300 font-medium rounded-lg text-sm w-full sm:w-auto px-56 py-2.5 text-center">Selanjutnya</button>
+                            class="text-white bg-blue-500 hover:bg-indigo-800 focus:ring-4 focus:outline-none focus:ring-indigo-300 font-medium rounded-lg text-sm w-full sm:w-auto px-56 py-2.5 text-center">Selanjutnya</button>
                     </div>
                 </div>
 
@@ -141,11 +155,11 @@
                         <label for="linkedin" class="block mb-2 text-sm pt-4 font-medium text-gray-900">Linkedin</label>
                         <input type="text"
                             class=" border-gray-950 border bg-slate-200 py-1 w-full focus:border-blue-500 focus:bg-white focus:outline-none bg-opacity-50 rounded-md text-black px-2"
-                            name="linkedin" id="linkedin" placeholder="Masukkan URL Linkedin" required>
+                            name="linkedin" id="linkedin" placeholder="Masukkan URL Linkedin" >
 
                         <div class="flex items-center justify-center pt-14 pb-2">
-                            <button type="button" onclick="registersuccess()"
-                                class="text-white bg-indigo-700 hover:bg-indigo-800 focus:ring-4 focus:outline-none focus:ring-indigo-300 font-medium rounded-lg text-sm w-full sm:w-auto px-56 py-2.5 text-center">Selanjutnya</button>
+                            <button type="submit" 
+                                class="text-white bg-blue-500 hover:bg-indigo-800 focus:ring-4 focus:outline-none focus:ring-indigo-300 font-medium rounded-lg text-sm w-full sm:w-auto px-56 py-2.5 text-center">Daftar</button>
                         </div>
                         <div class="flex items-center justify-center pt-2 pb-4">
                             <button type="button" onclick="goToStep(1)"
@@ -202,20 +216,6 @@
             svgelement.forEach(element => {
                 element.style.display = 'none';
             });
-        }
-
-        function registersuccess() {
-            Swal.fire({
-                icon: 'success',
-                title: 'Register Success',
-                text: 'Silahkan login untuk melanjutkan',
-                showConfirmButton: true,
-                confirmButtonText: 'OK',
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    document.getElementById('form-register').submit();
-                }
-            })
         }
     </script>
 

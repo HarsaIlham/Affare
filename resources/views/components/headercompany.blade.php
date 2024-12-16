@@ -83,8 +83,8 @@
 <body class="bg-gray-50">
     <header>
         <div class="flex items-center space-x-2">
-            <img src="{{ asset('storage/header-resource/affare-icon.webp') }}" alt="Logo" class="h-8">
-            <span class="affare-text text-black">Affare<span style="color: #5d8de2;">!</span></span>
+                <img src="{{ asset('storage/header-resource/affare-icon.webp') }}" alt="Logo" class="h-8">
+                <span class="affare-text text-black">Affare<span style="color: #5d8de2;">!</span></span>
         </div>
 
         <nav>

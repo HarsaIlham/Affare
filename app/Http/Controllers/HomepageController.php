@@ -12,9 +12,13 @@ use Illuminate\Http\Request;
 class HomepageController extends Controller
 {
     public function homepage () {
+        $currentPage = request()->get('halaman', 1);
+        $perPage = 9;
         $provinces = Province::all();
-        $lowongans = Lowongan::with(['company', 'kota', 'tipejob', 'jenisjob', 'province'])->get();
-        return view ('homepage',compact ('provinces', 'lowongans'));
+        Lowongan::where('exp_date', '<', now())->where('status', '1')->update(['status' => '0']);
+        $banyaklowongan = Lowongan::where('status', '1')->count();
+        $lowongans = Lowongan::with(['company', 'kota', 'tipejob', 'jenisjob', 'province'])->where('status', '1')->paginate($perPage, ['*'], 'halaman', $currentPage);
+        return view ('homepage',compact ('provinces', 'lowongans', 'banyaklowongan'));
     }
     public function perusahaan() {
         $companies = Company::all();

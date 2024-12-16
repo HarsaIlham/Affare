@@ -14,12 +14,12 @@ use App\Http\Controllers\PerusahaanController;
 use App\Http\Controllers\ProfileCompanyController;
 use App\Http\Controllers\LowonganCompanyController;
 
-
-
+Route::get('/filter', [LowonganCompanyController::class, 'filter'])->name('filter');
+Route::get('/search', [LowonganCompanyController::class, 'search'])->name('search');
 Route::get('/homepage', [HomepageController::class, 'homepage'])->name('homepage-seeker');
 Route::group(['middleware' => ['guest:seeker,company']], function () {
-    Route::get('/detaillowongan/{id}/detail', [HomepageController::class, 'detaillowongan'])->name('detail-lowongan');
     Route::get('/', function () {return view('components.landing');})->name('landing');
+    Route::get('/detaillowongan/{id}/detail', [HomepageController::class, 'detaillowongan'])->name('detail-lowongan');
     Route::get('/loginseeker', [AuthController::class, 'loginseeker'])->name('loginseeker');
     Route::get('/logincompany', [AuthController::class, 'logincompany'])->name('logincompany');
     Route::post('/loginseeker', [AuthController::class, 'authenticateseeker'])->name('authenticateseeker');
@@ -47,6 +47,8 @@ Route::group(['middleware' => ['auth:seeker']], function () {
 });
 
 Route::group(['middleware' => ['auth:company']], function () {
+    Route::get('/searchdashboard', [LowonganCompanyController::class, 'searchcompanydashboard'])->name('searchdashboard');
+    Route::get('/searchlowongan', [LowonganCompanyController::class, 'searchlowongan'])->name('searchlowongan');
     Route::get('/companydashboard', [CompanyController::class, 'companydashboard'])->name('companydashboard');
     Route::get('/lowongancompany', [LowonganCompanyController::class, 'showLowonganCompany'])->name('lowongancompany');
     Route::get('/reviewlamaran', [CompanyController::class, 'reviewlamaran'])->name('reviewlamaran');

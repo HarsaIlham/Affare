@@ -55,7 +55,7 @@ class RegisterController extends Controller
         // dd($validatedData);
         $validatedData['password'] = bcrypt($validatedData['password']);
         Seeker::create($validatedData);
-        return redirect()->route('loginseeker');
+        return redirect()->route('loginseeker')->with('success', 'Registrasi Berhasil');
     }
     public function storecompany(Request $request)
     {
@@ -80,6 +80,6 @@ class RegisterController extends Controller
         $validatedData['password'] = bcrypt($validatedData['password']);
         Company::create($validatedData);
 
-        return redirect()->route('logincompany');
+        return redirect()->route('logincompany')->with('success', 'Registrasi Berhasil');
     }
 }

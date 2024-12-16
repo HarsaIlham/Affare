@@ -24,7 +24,7 @@
     @endif
 
 
-    <div class="flex h-screen">
+    <div class=" main flex-1 p-6">
 
         <main class="flex-1 bg-white p-6">
 
@@ -68,12 +68,14 @@
             </div>
 
             <div class="flex justify-between items-center bg-gray-100 p-4 rounded-lg mb-4 shadow">
-
-                <div class="flex items-center bg-white border border-gray-300 rounded-lg px-4 py-2 w-1/3">
-                    <input type="text" placeholder="Cari pekerjaan..." class="flex-1 outline-none text-gray-700">
-                    <button class="ml-2 text-blue-500 hover:underline">
-                        Cari
-                    </button>
+                <div class=" bg-white border border-gray-300 rounded-lg px-4 py-2 w-1/3">
+                    <form action="{{ route('searchdashboard') }}" method="GET" class="flex justify-between">
+                        <input type="text" placeholder="Cari pekerjaan..." name="search"
+                            class="flex-1 outline-none text-gray-700">
+                        <button type="submit" class="ml-2 text-blue-500 hover:underline">
+                            Cari
+                        </button>
+                    </form>
                 </div>
 
 
@@ -89,9 +91,11 @@
             </div>
 
 
+
             <div>
-                <table class="w-full bg-white border border-gray-200 rounded-lg shadow-md text-left">
+                <table class="w-full bg-white border border-gray-200 rounded-lg shadow-md text-left ">
                     <thead class="bg-gray-100 border-b border-gray-200">
+
                         <tr>
                             <th class="text-left p-4 text-gray-600">Pekerjaan</th>
                             <th class="text-left p-4 text-gray-600">Status</th>
@@ -100,6 +104,9 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @if (isset($query))
+                            <h3>Hasil pencarian untuk: "{{ $query }}"</h3>
+                        @endif
                         @foreach ($lowongans as $lowongan)
                             <tr class="border-b border-gray-200 hover:bg-gray-50 ">
                                 <td class="p-4">{{ $lowongan->judul }}</td>
@@ -113,7 +120,7 @@
                                 @if ($lowongan->status == 'Aktif')
                                     <td class="p-4 text-green-500">{{ $lowongan->status }}</td>
                                 @else
-                                    <td class="p-4 text-red-500">{{ $lowongan->status }}</td>                           
+                                    <td class="p-4 text-red-500">{{ $lowongan->status }}</td>
                                 @endif
                                 <td class="p-4">{{ $lowongan->jumlah_pelamar }}</td>
                                 <td class="p-4">{{ $lowongan->exp_date }}</td>
@@ -121,6 +128,11 @@
                         @endforeach
                     </tbody>
                 </table>
+                <div class="flex justify-end items-center mt-6">
+                    <div class="flex gap-2">
+                        {{ $lowongans->links() }}
+                    </div>
+                </div>
             </div>
         </main>
     </div>

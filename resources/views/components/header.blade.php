@@ -25,7 +25,8 @@
         }
 
         .custom-button:hover {
-            background-color: #1f437e; /* Darker blue on hover */
+            background-color: #1f437e;
+            /* Darker blue on hover */
         }
 
         .custom-button-text {
@@ -53,14 +54,14 @@
                 </svg>
             </button>
 
-            <nav id="navbar" class="hidden md:flex space-x-6 text-gray-600">
+            <n id="navbar" class="hidden md:flex space-x-6 text-gray-600">
                 <a href="{{ route('homepage-seeker') }}"
                     class="font-bold hover:text-blue-600 {{ request()->routeIs('homepage-seeker') ? 'text-blue-600' : '' }}">Eksplor</a>
                 <a href="{{ route('perusahaan') }}"
                     class="font-bold hover:text-blue-600 {{ request()->routeIs('perusahaan') ? 'text-blue-600' : '' }}">Perusahaan</a>
-                {{-- <a href="#" class="font-bold hover:text-blue-600">Tersimpan</a> --}}
-                <a href="{{ route('terdaftar') }}" class="font-bold hover:text-blue-600">Terdaftar</a>
-            </nav>
+                <a href="{{ route('terdaftar') }}"
+                    class="font-bold hover:text-blue-600 {{ request()->routeIs('terdaftar') ? 'text-blue-600' : '' }}">Terdaftar</a>
+            </n>
 
 
             <div class="hidden md:flex items-center space-x-4">
@@ -72,7 +73,8 @@
                     </a>
                 @else
                     <div class="flex items-center space-x-4">
-                        <a href="{{ route('login') }}" class="hover:text-indigo-900 text-indigo-600 font-bold text-xl">Masuk</a>
+                        <a href="{{ route('login') }}"
+                            class="hover:text-indigo-900 text-indigo-600 font-bold text-xl">Masuk</a>
                         <a href="{{ route('role-register') }}" class="custom-button">
                             <div class="custom-button-text">Daftar</div>
                         </a>
